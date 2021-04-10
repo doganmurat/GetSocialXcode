@@ -8,14 +8,40 @@
 import UIKit
 import Foundation
 
-class ViewController: UIViewController {
-
+class ViewController: UIViewController, UITableViewDataSource {
+    
+    var events = [Event]()
+    
+    @IBOutlet weak var textField: UITextField!
+    @IBOutlet weak var tableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        view.backgroundColor = .red
+        tableView.dataSource=self
+
+    }
+    
+    
+    
+    @IBAction func buttonClick(_ sender: UIButton) {
+        parseData()
         
-        let url = URL(string:  "https://api.stubhub.com/sellers/search/events/v3")
+    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return events.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell")
+        cell?.textLabel?.text = events[indexPath.row].name
+        return cell!
+    }
+    func parseData(){
+        let text: String = textField.text!
+        let rowCount = 500
+        events = []
+        
+        let url = URL(string:  "https://api.stubhub.com/sellers/search/events/v3?rows=\(rowCount)&city=\(text)")
         
         guard url != nil else {
             print("Error")
@@ -27,28 +53,21 @@ class ViewController: UIViewController {
         let header = ["Authorization": "Bearer YzKMJ21JV5zm2Gvsrc89v1YgrvMb","Accept": "application/json"]
         request.allHTTPHeaderFields = header
         request.httpMethod = "GET"
-        
-        URLSession.shared.dataTask(with: request, completionHandler: {data,response,error in
+        let session = URLSession(configuration: URLSessionConfiguration.default, delegate: nil, delegateQueue: OperationQueue.main)
+        session.dataTask(with: request, completionHandler: {data,response,error in
             guard let data = data, error == nil else {
                 return
             }
             var result: Welcome?
             do{
                 result = try JSONDecoder().decode(Welcome.self, from: data)
-                }
+                self.events = result!.events
+                
+            }
             catch {
                 print("failed \(error.localizedDescription)")
             }
-            
-            guard let json = result else{
-                return
-            }
-            print(json.numFound)
-            
-        }).resume()
-            
-    }
-    
+                                    self.tableView.reloadData()        }).resume()}
 }
 
 
