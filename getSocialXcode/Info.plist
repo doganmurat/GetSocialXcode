@@ -66,5 +66,7 @@
 	<string>Please allow access</string>
 	<key>NSRemindersUsageDescription</key>
 	<string>Please allow access</string>
+	<key>NSFaceIDUsageDescription</key>
+	<string>Please allow access</string>
 </dict>
 </plist>

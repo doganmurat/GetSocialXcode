@@ -5,6 +5,7 @@
 //  Created by murat on 11.04.2021.
 //
 
+import LocalAuthentication
 import Foundation
 import UIKit
 import  EventKit
@@ -34,6 +35,30 @@ class SecondViewController: UIViewController, EKEventViewDelegate {
     }
     
     @IBAction func addYourCalendarClick(_ sender: Any) {
+        auth()
+    }
+    
+    func auth(){
+        let context = LAContext()
+        var error: NSError? = nil
+        if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error){
+            let reason = "Please authorize with touch id"
+            context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) { [weak self] success, error in
+                DispatchQueue.main.async {
+                    guard success, error == nil else{
+                        let alert = UIAlertController(title: "Unavailable", message: "You cant use", preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
+                        self?.present(alert,animated: true)
+                        return
+                    }
+                    self?.eventVC()
+                }
+            }
+        }else{
+            //
+        }
+    }
+    func eventVC(){
         store.requestAccess(to: .event) { [weak self]  success, error in
             if success, error == nil {
                 DispatchQueue.main.async {
@@ -50,7 +75,6 @@ class SecondViewController: UIViewController, EKEventViewDelegate {
             }
         }
     }
-    
     
     func parseData(){
         events = []
