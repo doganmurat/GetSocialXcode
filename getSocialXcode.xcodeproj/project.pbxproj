@@ -13,6 +13,8 @@
 		FB37EBE326204D4D005AA205 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB37EBE126204D4D005AA205 /* Main.storyboard */; };
 		FB37EBE526204D4F005AA205 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FB37EBE426204D4F005AA205 /* Assets.xcassets */; };
 		FB37EBE826204D4F005AA205 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB37EBE626204D4F005AA205 /* LaunchScreen.storyboard */; };
+		FB6063932623AEF200446427 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB6063922623AEF200446427 /* TableViewCell.swift */; };
+		FB759A1326237BF200D73961 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB759A1226237BF200D73961 /* SecondViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		FB37EBE426204D4F005AA205 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FB37EBE726204D4F005AA205 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FB37EBE926204D4F005AA205 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FB6063922623AEF200446427 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		FB759A1226237BF200D73961 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,10 +63,12 @@
 				FB37EBDB26204D4D005AA205 /* AppDelegate.swift */,
 				FB37EBDD26204D4D005AA205 /* SceneDelegate.swift */,
 				FB37EBDF26204D4D005AA205 /* ViewController.swift */,
+				FB759A1226237BF200D73961 /* SecondViewController.swift */,
 				FB37EBE126204D4D005AA205 /* Main.storyboard */,
 				FB37EBE426204D4F005AA205 /* Assets.xcassets */,
 				FB37EBE626204D4F005AA205 /* LaunchScreen.storyboard */,
 				FB37EBE926204D4F005AA205 /* Info.plist */,
+				FB6063922623AEF200446427 /* TableViewCell.swift */,
 			);
 			path = getSocialXcode;
 			sourceTree = "<group>";
@@ -137,9 +143,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FB6063932623AEF200446427 /* TableViewCell.swift in Sources */,
 				FB37EBE026204D4D005AA205 /* ViewController.swift in Sources */,
 				FB37EBDC26204D4D005AA205 /* AppDelegate.swift in Sources */,
 				FB37EBDE26204D4D005AA205 /* SceneDelegate.swift in Sources */,
+				FB759A1326237BF200D73961 /* SecondViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
