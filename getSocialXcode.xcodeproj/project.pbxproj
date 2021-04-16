@@ -3,11 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		FB24B7FD2629E27E0042E281 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FB24B7FC2629E27E0042E281 /* GoogleService-Info.plist */; };
+		FB24B845262A012E0042E281 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FB24B844262A012E0042E281 /* GoogleService-Info.plist */; };
 		FB37EBDC26204D4D005AA205 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB37EBDB26204D4D005AA205 /* AppDelegate.swift */; };
 		FB37EBDE26204D4D005AA205 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB37EBDD26204D4D005AA205 /* SceneDelegate.swift */; };
 		FB37EBE026204D4D005AA205 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB37EBDF26204D4D005AA205 /* ViewController.swift */; };
@@ -19,7 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		FB24B7FC2629E27E0042E281 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		FB24B844262A012E0042E281 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FB37EBD826204D4D005AA205 /* getSocialXcode.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = getSocialXcode.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB37EBDB26204D4D005AA205 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FB37EBDD26204D4D005AA205 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -79,7 +79,7 @@
 				FB37EBE626204D4F005AA205 /* LaunchScreen.storyboard */,
 				FB37EBE926204D4F005AA205 /* Info.plist */,
 				FB6063922623AEF200446427 /* TableViewCell.swift */,
-				FB24B7FC2629E27E0042E281 /* GoogleService-Info.plist */,
+				FB24B844262A012E0042E281 /* GoogleService-Info.plist */,
 			);
 			path = getSocialXcode;
 			sourceTree = "<group>";
@@ -143,7 +143,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FB37EBE826204D4F005AA205 /* LaunchScreen.storyboard in Resources */,
-				FB24B7FD2629E27E0042E281 /* GoogleService-Info.plist in Resources */,
+				FB24B845262A012E0042E281 /* GoogleService-Info.plist in Resources */,
 				FB37EBE526204D4F005AA205 /* Assets.xcassets in Resources */,
 				FB37EBE326204D4D005AA205 /* Main.storyboard in Resources */,
 			);
