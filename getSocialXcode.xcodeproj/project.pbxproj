@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FB24B7FD2629E27E0042E281 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FB24B7FC2629E27E0042E281 /* GoogleService-Info.plist */; };
 		FB37EBDC26204D4D005AA205 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB37EBDB26204D4D005AA205 /* AppDelegate.swift */; };
 		FB37EBDE26204D4D005AA205 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB37EBDD26204D4D005AA205 /* SceneDelegate.swift */; };
 		FB37EBE026204D4D005AA205 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB37EBDF26204D4D005AA205 /* ViewController.swift */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FB24B7FC2629E27E0042E281 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FB37EBD826204D4D005AA205 /* getSocialXcode.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = getSocialXcode.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB37EBDB26204D4D005AA205 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FB37EBDD26204D4D005AA205 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -41,11 +43,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2BC10CEC5652778F9163C00B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		FB37EBCF26204D4D005AA205 = {
 			isa = PBXGroup;
 			children = (
 				FB37EBDA26204D4D005AA205 /* getSocialXcode */,
 				FB37EBD926204D4D005AA205 /* Products */,
+				2BC10CEC5652778F9163C00B /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -69,6 +79,7 @@
 				FB37EBE626204D4F005AA205 /* LaunchScreen.storyboard */,
 				FB37EBE926204D4F005AA205 /* Info.plist */,
 				FB6063922623AEF200446427 /* TableViewCell.swift */,
+				FB24B7FC2629E27E0042E281 /* GoogleService-Info.plist */,
 			);
 			path = getSocialXcode;
 			sourceTree = "<group>";
@@ -83,6 +94,7 @@
 				FB37EBD426204D4D005AA205 /* Sources */,
 				FB37EBD526204D4D005AA205 /* Frameworks */,
 				FB37EBD626204D4D005AA205 /* Resources */,
+				FB24B7F82629DB9D0042E281 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -131,12 +143,35 @@
 			buildActionMask = 2147483647;
 			files = (
 				FB37EBE826204D4F005AA205 /* LaunchScreen.storyboard in Resources */,
+				FB24B7FD2629E27E0042E281 /* GoogleService-Info.plist in Resources */,
 				FB37EBE526204D4F005AA205 /* Assets.xcassets in Resources */,
 				FB37EBE326204D4D005AA205 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		FB24B7F82629DB9D0042E281 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}",
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/FirebaseCrashlytics/run\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		FB37EBD426204D4D005AA205 /* Sources */ = {
@@ -295,6 +330,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 7R5W89XF9B;
 				INFOPLIST_FILE = getSocialXcode/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

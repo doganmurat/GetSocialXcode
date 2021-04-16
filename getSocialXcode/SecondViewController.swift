@@ -10,12 +10,18 @@ import Foundation
 import UIKit
 import  EventKit
 import EventKitUI
+import RealmSwift
 
-class SecondViewController: UIViewController, EKEventViewDelegate {
+class SecondViewController: UIViewController, EKEventEditViewDelegate {
+    
+    func eventEditViewController(_ controller: EKEventEditViewController,
+                                 didCompleteWith action: EKEventEditViewAction){
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     var events = [Event]()
     var id: Int?
-    let store = EKEventStore()
-    
+    let realmevents = try! Realm().objects(EventObject.self).sorted(byKeyPath: "eventDateLocal", ascending: true )
     @IBOutlet weak var innerEventName: UILabel!
     @IBOutlet weak var innerEventDesc: UILabel!
     @IBOutlet weak var innerEventDate: UILabel!
@@ -26,12 +32,6 @@ class SecondViewController: UIViewController, EKEventViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         parseData()
-    }
-    func eventViewController(_ controller: EKEventViewController, didCompleteWith action: EKEventViewAction) {
-        controller.dismiss(animated: true, completion: nil)
-        controller.allowsEditing = true
-        controller.allowsCalendarPreview = true
-       
     }
     
     @IBAction func addYourCalendarClick(_ sender: Any) {
@@ -54,63 +54,48 @@ class SecondViewController: UIViewController, EKEventViewDelegate {
                     self?.eventVC()
                 }
             }
+    
         }else{
             //
         }
     }
     func eventVC(){
-        store.requestAccess(to: .event) { [weak self]  success, error in
-            if success, error == nil {
-                DispatchQueue.main.async {
-                    guard let store = self?.store else {return}
-                    
-                    let newEvent = EKEvent(eventStore:store)
-                    newEvent.title = "Deneme"
-                    let otherVC = EKEventEditViewController()
-                    otherVC.eventStore = store
-                    otherVC.event = newEvent
-                    self?.present(otherVC, animated: true)
-                    
+        
+        let isoDate = realmevents[id!].eventDateLocal
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX") // set locale to reliable US_POSIX
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        let date = dateFormatter.date(from:isoDate)!
+        
+        
+        let store = EKEventStore()
+        store.requestAccess(to: .event) { (granted, error) in
+                if granted {
+                    DispatchQueue.main.async {
+                        let newEvent = EKEvent(eventStore:store)
+                        let otherVC = EKEventEditViewController()
+                        otherVC.event = newEvent
+                        otherVC.editViewDelegate = self
+                        otherVC.eventStore = store
+                        self.present(otherVC, animated: true)
+                        newEvent.title = self.realmevents[self.id!].name
+                        newEvent.startDate = date
+                        newEvent.endDate = date
+                    }
                 }
-            }
-        }
-    }
-    
-    func parseData(){
-        events = []
-        
-        let url = URL(string:  "https://api.stubhub.com/sellers/search/events/v3?id=\(id ?? 0)")
-        
-        guard url != nil else {
-            print("Error")
             return
         }
         
-        var request = URLRequest(url: url!, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 10)
-        
-        let header = ["Authorization": "Bearer YzKMJ21JV5zm2Gvsrc89v1YgrvMb","Accept": "application/json"]
-        request.allHTTPHeaderFields = header
-        request.httpMethod = "GET"
-        let session = URLSession(configuration: URLSessionConfiguration.default, delegate: nil, delegateQueue: OperationQueue.main)
-        session.dataTask(with: request, completionHandler: {data,response,error in
-            guard let data = data, error == nil else {
-                return
-            }
-            var result: Welcome?
-            do{
-                result = try JSONDecoder().decode(Welcome.self, from: data)
-                self.events = result!.events
-                
-            }
-            catch {
-                print("failed \(error.localizedDescription)")
-            }
-            self.title = result?.events[0].name
-            self.innerEventName?.text = self.events[0].name
-            self.innerEventDesc?.text = self.events[0].eventDescription
-            self.innerEventPrice?.text = String(self.events[0].ticketInfo.minListPrice)
-            self.innerEventDate?.text = self.events[0].eventDateLocal
-            self.innerEventVenueName?.text = self.events[0].venue.name
-            self.innerEventVenueCity?.text = self.events[0].venue.city
-        }).resume()}
+    }
+    
+    func parseData(){
+
+        title = realmevents[id!].name
+        innerEventName?.text = realmevents[id!].name
+        innerEventDesc?.text = realmevents[id!].eventDescription
+        innerEventPrice?.text = String(realmevents[id!].ticketInfo!.minListPrice)
+        innerEventDate?.text = realmevents[id!].eventDateLocal
+        innerEventVenueName?.text = realmevents[id!].venue?.name
+        innerEventVenueCity?.text = realmevents[id!].venue?.city
+    }
 }

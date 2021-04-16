@@ -68,5 +68,7 @@
 	<string>Please allow access</string>
 	<key>NSFaceIDUsageDescription</key>
 	<string>Please allow access</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Please allow access</string>
 </dict>
 </plist>
